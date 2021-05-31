@@ -1,4 +1,4 @@
 "use strict";
-class game {
+class Game {
 }
 //# sourceMappingURL=game.js.map

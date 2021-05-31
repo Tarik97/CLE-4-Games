@@ -4,7 +4,7 @@ class tube {
         this.x = 0;
         this.y = 0;
         this.speed = 0;
-        console.log("Characters are created");
+        console.log("Tube is created");
         this.create();
     }
     create() {

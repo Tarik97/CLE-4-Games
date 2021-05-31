@@ -1,5 +1,4 @@
-"use strict";
-class Characters {
+export class characters {
     constructor() {
         this.x = 0;
         this.y = 0;

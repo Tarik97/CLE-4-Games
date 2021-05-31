@@ -1,4 +1,3 @@
-class game {
-
-}
-
+ class Game {
+     
+ }
