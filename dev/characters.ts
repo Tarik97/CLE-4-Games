@@ -1,4 +1,4 @@
-class Characters {
+class characters {
     x : number = 0 
     y : number = 0
     div : HTMLElement
