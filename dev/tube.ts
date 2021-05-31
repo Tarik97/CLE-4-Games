@@ -1,4 +1,4 @@
-class tube{
+export class Tube{
 
     x : number = 0 
     y : number = 0

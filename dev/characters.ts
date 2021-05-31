@@ -1,4 +1,4 @@
-export class characters {
+export class Characters {
     x : number = 0 
     y : number = 0
     div : HTMLElement
