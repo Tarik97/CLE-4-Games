@@ -1,4 +1,4 @@
-import { Letter } from "./letter.js"
+import { Letter } from "./characters.js"
 import { Game } from "./game.js"
 
 export class Hook {
