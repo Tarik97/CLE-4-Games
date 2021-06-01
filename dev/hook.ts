@@ -1,9 +1,6 @@
-import { characters } from "./characters.js"
-import { Game } from "./game.js"
-
 export class Hook {
 
-    letter : Letter
+    // letter : Letter
     outerDiv : HTMLElement;
     div : HTMLElement;
     
@@ -20,8 +17,8 @@ export class Hook {
     }
 
     shootHook() {
-        if(this.letter = correctChar) {
+        // if(this.letter = correctChar) {
 
-        }
+        // }
     }
 }

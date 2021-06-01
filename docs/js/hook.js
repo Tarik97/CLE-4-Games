@@ -9,8 +9,6 @@ export class Hook {
         document.body.appendChild(this.outerDiv);
     }
     shootHook() {
-        if (this.letter = correctChar) {
-        }
     }
 }
-//# sourceMappingURL=hook.js.map
+//# sourceMappingURL=Hook.js.map

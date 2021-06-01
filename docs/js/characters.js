@@ -1,4 +1,4 @@
-export class characters {
+export class Characters {
     constructor() {
         this.x = 0;
         this.y = 0;
@@ -24,4 +24,4 @@ export class characters {
         }
     }
 }
-//# sourceMappingURL=characters.js.map
+//# sourceMappingURL=Characters.js.map

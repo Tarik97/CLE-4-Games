@@ -1,17 +1,27 @@
-import { Characters } from "./characters"
-import { Hook } from "./hook"
-import { Tube } from "./tube"
+import { Hook } from "./Hook.js"
+import { Tube } from "./Tube.js"
+import { Level } from "./Level.js"
 
- class Game {
-    characters : Characters
-    hook : Hook
-    tube : Tube
-
+class Game {
     
+    private levels : Level[] 
+    private hook : Hook
+    private tube : Tube
 
-constructor(){
-        console.log("world has been created!!")
+    constructor() {
+        //Level 1: using the word 'Bus'
+        const level1: Level = new Level("B_s", "u", ["a", "u", "o", "i"])
+        console.log('Game was created.')
+        
+        //Push the first level to an array
+        this.levels = []
+        this.levels.push(level1)
+
+        /*Optional
+         player.score += assignment1.score 
+         kan niet, score is private (getter aanmaken)
+         */
     }
- }
+}
 
- new Game()
+new Game()

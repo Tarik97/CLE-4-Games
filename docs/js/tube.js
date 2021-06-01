@@ -1,5 +1,4 @@
-"use strict";
-class tube {
+export class Tube {
     constructor() {
         this.x = 0;
         this.y = 0;
@@ -15,4 +14,4 @@ class tube {
     generateChar() {
     }
 }
-//# sourceMappingURL=tube.js.map
+//# sourceMappingURL=Tube.js.map
