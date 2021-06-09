@@ -1,36 +1,46 @@
+import { transform } from "../node_modules/typescript/lib/typescript"
+
 export class Character {
     x : number = 0 
     y : number = 0
     div : HTMLElement
-    speed : number = 0
+    speed : number = 0.0001
     value : string = ''
-    //char on belt?
     onBelt : boolean
+    spawnElement : HTMLElement
  
     constructor(value : string){
-        console.log("Characters are created")
         this.value = value
+        this.spawnElement = document.querySelector('charcontainer')!;
         this.create()
     }
- 
+
+
+    //not working
+    update() : void {
+        if(logkey = "KeyW") {
+            console.log("we movin");
+            this.x -= this.speed;
+            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+       
+    }
+    
+
     create() : void{
         this.div = document.createElement("Characters")
-        document.body.appendChild(this.div)
+        this.spawnElement.appendChild(this.div);
         this.div.innerText = this.value
-        this.x = 0 //waar tube is located on the window innerwidth en height 
- 
+        this.x = 0 
     }
  
-    checkOnBelt(a: ClientRect, b: ClientRect) : boolean{
+    checkOnBelt(a: ClientRect, b: ClientRect) : boolean {
         return(a.left <= b.right &&
             b.left <= a.right &&
             a.top <= b.bottom &&
             b.top <= a.bottom)
- 
-           
-            this.onBelt = true
- 
-        //om dit te laten werken moet belt een getClientRect functie hebben 
+
+            this.onBelt = true 
     }
  
     setSpeed() : void{

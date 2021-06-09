@@ -1,19 +1,20 @@
 export class Level {
+    
     private word : string 
     private correctAnswer : string
-    private possibilities : string[]
- 
-    /* Optional
-        private score : number
-        private difficulty : number */
-    public getCharacters() : string[] {
-        // get random letter from possibilities
-        return this.possibilities;
+    private _possibilities: string[];
+
+    public get possibilities(): string[] {
+        return this._possibilities;
     }
+    public set possibilities(value: string[]) {
+        this._possibilities = value;
+    }
+
  
-    constructor(w : string, c : string, p : string[]) {
-        this.word           = w
-        this.correctAnswer  = c
-        this.possibilities  = p
+    constructor(word : string, correctAnswer : string, possibilities : string[]) {
+        this.word           = word
+        this.correctAnswer  = correctAnswer
+        this._possibilities  = possibilities
     }
 }
