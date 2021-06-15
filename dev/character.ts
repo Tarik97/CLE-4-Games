@@ -18,6 +18,7 @@ export class Character {
         //     console.log("we movin");
         //     this.x -= this.speed;
         //     this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        //      test test test git test 
         // }
     }
     create() : void{
