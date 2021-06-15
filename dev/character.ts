@@ -3,14 +3,16 @@ export class Character {
     x : number = 0 
     y : number = 0
     div : HTMLElement
-    speed : number = 0.0001
+    speed : number = 0
     value : string = ''
     onBelt : boolean
+    isCorrect : boolean = false
     spawnElement : HTMLElement
-    constructor(value : string){
+
+    constructor(value : string, isCorrect : boolean){
         this.value = value
         this.spawnElement = document.querySelector('charcontainer')!;
-        this.create()
+        this.create(isCorrect)
     }
     //not working
     update() : void {
@@ -18,11 +20,13 @@ export class Character {
         //     console.log("we movin");
         //     this.x -= this.speed;
         //     this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
-        //      test test test git test 
+        //      test test test git
         // }
     }
-    create() : void{
+    create(isCorrect : boolean) : void{
         this.div = document.createElement("Characters")
+        var myString : string = String(isCorrect);
+        this.div.id = myString
         this.spawnElement.appendChild(this.div);
         this.div.innerText = this.value
         this.x = 0 

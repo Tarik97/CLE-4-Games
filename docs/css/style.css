@@ -51,3 +51,20 @@ characters {
     margin: 0.5rem;
     box-shadow: 10px 10px 10px black;
 }
+
+word {
+    font-size: 2rem;
+    color: white;
+}
+
+icon {
+    font-size: 1rem;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}

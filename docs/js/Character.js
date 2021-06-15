@@ -1,17 +1,20 @@
 export class Character {
-    constructor(value) {
+    constructor(value, isCorrect) {
         this.x = 0;
         this.y = 0;
-        this.speed = 0.0001;
+        this.speed = 0;
         this.value = '';
+        this.isCorrect = false;
         this.value = value;
         this.spawnElement = document.querySelector('charcontainer');
-        this.create();
+        this.create(isCorrect);
     }
     update() {
     }
-    create() {
+    create(isCorrect) {
         this.div = document.createElement("Characters");
+        var myString = String(isCorrect);
+        this.div.id = myString;
         this.spawnElement.appendChild(this.div);
         this.div.innerText = this.value;
         this.x = 0;

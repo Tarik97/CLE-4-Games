@@ -93,6 +93,7 @@ class Game {
             this.icon.classList.remove("incorrect");
             this.icon.classList.add("correct");
             this.icon.innerText = "correct"
+            this.currentWordText.innerText = "Bus"
 
         }
         else {

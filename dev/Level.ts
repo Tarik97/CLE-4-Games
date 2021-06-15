@@ -1,6 +1,6 @@
 export class Level {
     
-    private word : string 
+    public word : string 
     public correctAnswer : string
     private _possibilities: string[]
 
