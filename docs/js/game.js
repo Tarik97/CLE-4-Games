@@ -4,16 +4,23 @@ class Game {
     constructor() {
         this.levels = [];
         this.characters = [];
-        this.levels = [];
-        const level1 = new Level("B_s", "u", ["a", "u", "o", "i", "x"]);
+        this.currentLevel = 0;
+        this.level1 = new Level("B_s", "u", ["a", "u", "o", "i", "x"]);
+        this.level2 = new Level("T_s", "a", ["r", "a", "i", "u", "v"]);
+        this.level3 = new Level("P_n", "e", ["h", "f", "e", "o", "a"]);
+        this.level4 = new Level("G_m", "u", ["p", "u", "o", "i", "q"]);
+        if (this.currentLevel == 0) {
+            this.spawnCharacters(this.level1);
+        }
         this.spawnElement = document.querySelector('charcontainer');
-        this.spawnCharacters(level1);
-        this.gameloop();
+        document.getElementById("foreground").addEventListener("click", this.clickHandler);
     }
-    gameloop() {
+    clickHandler(e) {
+        let target = e.target;
+        console.log(target.innerText);
     }
     spawnCharacters(level1) {
-        let length = level1.possibilities.length;
+        length = level1.possibilities.length;
         for (let i = 0; i < length; i++) {
             this.selectRandomCharacter(level1);
         }
@@ -22,7 +29,6 @@ class Game {
         let randomValue = Math.floor(Math.random() * level.possibilities.length);
         if (level.possibilities.length > 0) {
             let c = level.possibilities.splice(randomValue, 1);
-            console.log(level.possibilities);
             this.characters.push(new Character(c[0]));
         }
     }
