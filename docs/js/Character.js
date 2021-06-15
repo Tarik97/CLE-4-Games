@@ -9,11 +9,6 @@ export class Character {
         this.create();
     }
     update() {
-        if (logkey = "KeyW") {
-            console.log("we movin");
-            this.x -= this.speed;
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
-        }
     }
     create() {
         this.div = document.createElement("Characters");
@@ -34,4 +29,4 @@ export class Character {
         }
     }
 }
-//# sourceMappingURL=Character.js.map
+//# sourceMappingURL=character.js.map
