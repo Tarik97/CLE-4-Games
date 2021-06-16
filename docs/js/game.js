@@ -24,11 +24,18 @@ class Game {
         this.icon = document.createElement("icon" + this.currentLevel);
         this.icon.classList.add("icon");
         this.wordElement.appendChild(this.icon);
-        document.getElementById("foreground").addEventListener("click", this.clickHandler);
+        document.body.addEventListener("click", this.clickHandler);
         if (this.currentLevel == 0) {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
             this.createLevel(this.levels[this.currentLevel]);
         }
+        this.gameloop();
+    }
+    gameloop() {
+        for (let i = 0; i < this.characters.length; i++) {
+            this.characters[i].update();
+        }
+        requestAnimationFrame(() => this.gameloop());
     }
     createLevel(level) {
         this.deletePreviousLevel();
@@ -41,10 +48,10 @@ class Game {
             if (level.possibilities.length > 0) {
                 let c = level.possibilities.splice(randomValue, 1);
                 if (c[0] == level.correctAnswer) {
-                    this.characters.push(new Character(c[0], true, this.currentLevel));
+                    this.characters.push(new Character(c[0], true, this.currentLevel, i));
                 }
                 else {
-                    this.characters.push(new Character(c[0], false, this.currentLevel));
+                    this.characters.push(new Character(c[0], false, this.currentLevel, i));
                 }
             }
         }
@@ -55,7 +62,7 @@ class Game {
             let previousWordText = document.querySelector("currentWordText" + this.previousLevel);
             this.wordElement.removeChild(previousWordText);
             for (let i = 0; i < this.characters.length; i++) {
-                this.characters[0].removePreviousCharacters(this.previousLevel);
+                this.characters[i].removePreviousCharacters(this.previousLevel);
                 console.log("i = " + i);
             }
             this.characters = [];

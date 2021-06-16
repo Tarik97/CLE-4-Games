@@ -3,41 +3,48 @@ import { transform } from "../node_modules/typescript/lib/typescript"
 export class Character {
     x : number = 0 
     y : number = 0
-    Characters : HTMLElement
-    speed : number = 0
+    character : HTMLElement
+    speed : number = 3
     value : string = ''
     onBelt : boolean
     isCorrect : boolean = false
     charContainer : HTMLElement
 
-    constructor(value : string, isCorrect : boolean, currenLevel : number){
+    constructor(value : string, isCorrect : boolean, currenLevel : number, offset : number){
         this.value = value
         this.charContainer = document.querySelector('charcontainer')!;
-        this.create(isCorrect, currenLevel)
+        this.create(isCorrect, currenLevel, offset)
     }
 
     //not working
     update() : void {
-        // if(logkey = "KeyW") {
-        //     console.log("we movin");
-        //     this.x -= this.speed;
-        //     this.Characters.style.transform = `translate(${this.x}px, ${this.y}px)`
-        //      test test test git
-        // }
+        console.log("we movin' ")
+        this.x += this.speed
+      
+        if (this.x > window.innerWidth){
+            this.x = -this.character.clientWidth
+        }
+        this.character.style.transform = `translate(${this.x}px, 200px)`
+        
     }
 
-    create(isCorrect : boolean, currentLevel : number) : void{
-        this.Characters = document.createElement("characters" + currentLevel)
-        this.Characters.classList.add("characters")
+    create(isCorrect : boolean, currentLevel : number, offset : number) : void{
+        this.character = document.createElement("characters" + currentLevel)
+        document.body.appendChild(this.character)
+
+        this.x = offset * 150
+
+        this.character.classList.add("characters")
         var myString : string = String(isCorrect);
-        this.Characters.id = myString
-        this.charContainer.appendChild(this.Characters);
-        this.Characters.innerText = this.value
+        this.character.id = myString
+        // this.charContainer.appendChild(this.character);
+        this.character.innerText = this.value
     }
 
     public removePreviousCharacters(previousLevel : number){
         let prevElement : HTMLElement = document.querySelector("characters" + previousLevel)!;
-        this.charContainer.removeChild(prevElement);
+        // this.charContainer.removeChild(prevElement);
+        this.character.remove()
     }
             
 

@@ -29,6 +29,7 @@ class Game {
 
     public constructor() {
 
+  
         this.levels.push(
             new Level("B_s", "u", ["a", "u", "o", "i", "x"]),
             new Level("T_s", "a", ["r", "a", "i", "u", "v"]),
@@ -46,7 +47,7 @@ class Game {
         this.wordElement.appendChild(this.icon);
 
         //adding click event listener
-        document.getElementById("foreground")!.addEventListener("click", this.clickHandler)
+        document.body.addEventListener("click", this.clickHandler)
 
         if (this.currentLevel == 0) {
 
@@ -55,6 +56,15 @@ class Game {
             //sending the level1 variable to the createLevel function
             this.createLevel(this.levels[this.currentLevel])
         }
+
+        this.gameloop();
+    }
+
+    gameloop(){
+        for (let i: number = 0; i < this.characters.length; i++) { 
+        this.characters[i].update();
+        }
+        requestAnimationFrame(() => this.gameloop())
     }
 
     //function that spawns characters depending on how many character possibilities there are in the level variable
@@ -87,10 +97,10 @@ class Game {
                 let c = level.possibilities.splice(randomValue, 1)
 
                 if (c[0] == level.correctAnswer) {
-                    this.characters.push(new Character(c[0], true, this.currentLevel))
+                    this.characters.push(new Character(c[0], true, this.currentLevel, i))
                 }
                 else {
-                    this.characters.push(new Character(c[0], false, this.currentLevel))
+                    this.characters.push(new Character(c[0], false, this.currentLevel, i))
                 }
             }
         }
@@ -111,7 +121,7 @@ class Game {
 
             for (let i: number = 0; i < this.characters.length; i++) {
                 // this.characters.slice
-                this.characters[0].removePreviousCharacters(this.previousLevel)
+                this.characters[i].removePreviousCharacters(this.previousLevel)
                 console.log("i = " + i)
 
             }
