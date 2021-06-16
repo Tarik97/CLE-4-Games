@@ -18,7 +18,6 @@ export class Character {
         this.Characters.id = myString;
         this.charContainer.appendChild(this.Characters);
         this.Characters.innerText = this.value;
-        this.x = 0;
     }
     removePreviousCharacters(previousLevel) {
         let prevElement = document.querySelector("characters" + previousLevel);

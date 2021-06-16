@@ -1,7 +1,7 @@
 export class Level {
-    
-    public word : string 
-    public correctAnswer : string
+
+    public word: string
+    public correctAnswer: string
     private _possibilities: string[]
 
     public get possibilities(): string[] {
@@ -13,9 +13,9 @@ export class Level {
 
 
 
-    constructor(word : string, correctAnswer : string, possibilities : string[]) {
-        this.word           = word
-        this.correctAnswer  = correctAnswer
-        this._possibilities  = possibilities
+    constructor(word: string, correctAnswer: string, possibilities: string[]) {
+        this.word = word
+        this.correctAnswer = correctAnswer
+        this._possibilities = possibilities
     }
 }
