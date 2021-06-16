@@ -21,23 +21,35 @@ class Game {
     Level currently only usable
     */
     public level1: Level = new Level("B_s", "u", ["a", "u", "o", "i", "x"])
+    public level2: Level = new Level("T_s", "a", ["r", "a", "i", "u", "v"])
+    public level3: Level = new Level("P_n", "e", ["h", "f", "e", "o", "a"])
+    public level4: Level = new Level("G_m", "u", ["p", "u", "o", "i", "q"])
 
-    /*
-    Future levels (levels shouldnt be made in the game class smh)
-    
-    public level2 : Level = new Level("T_s", "a", ["r", "a", "i", "u", "v"])
-    public level3 : Level = new Level("P_n", "e", ["h", "f", "e", "o", "a"])
-    public level4 : Level = new Level("G_m", "u", ["p", "u", "o", "i", "q"])
-
-    */
 
     public constructor() {
+
+
+        //adding click event listener
+        document.getElementById("foreground")!.addEventListener("click", this.clickHandler)
+
+        if (this.currentLevel == 0) {
+
+            //the element where the characters get appended to
+            this.spawnElement = document.querySelector('charcontainer')!
+            //sending the level1 variable to the createLevel function
+            this.createLevel(this.level1)
+        }
+    }
+
+    //function that spawns characters depending on how many character possibilities there are in the level variable
+    private createLevel(level: Level) {
+        length = level.possibilities.length;
         //where the current word and icon gets appended to
         this.wordElement = document.querySelector("word")!
         //the element wich has the text in it
         this.currentWordText = document.createElement("currentWordText")
         //inner text will be that of the current level's (level1) word
-        this.currentWordText.innerText = this.level1.word
+        this.currentWordText.innerText = level.word
         //appending....
         this.wordElement.appendChild(this.currentWordText);
 
@@ -45,24 +57,26 @@ class Game {
         this.icon = document.createElement("icon")
         //appending....
         this.wordElement.appendChild(this.icon);
-
-        //adding click event listener
-        document.getElementById("foreground")!.addEventListener("click", this.clickHandler)
-
-        if (this.currentLevel == 0) {
-            
-            //the element where the characters get appended to
-            this.spawnElement = document.querySelector('charcontainer')!
-            //sending the level1 variable to the spawnCharacters function
-            this.spawnCharacters(this.level1)
-        }
-    }
-
-    //function that spawns characters depending on how many character possibilities there are in the level variable
-    private spawnCharacters(level1: Level) {
-        length = level1.possibilities.length;
         for (let i: number = 0; i < length; i++) {
-            this.selectRandomCharacter(level1)
+            /* 
+            selects random characters by taking a random character from the character.possibilites array, then pushing to a character instance, 
+            also parces true or false depending if its the correct character. 
+            (bad way of doing it, you can see the correct answer when pressing "inspect element" in browser)
+            */
+
+            let randomValue = Math.floor(Math.random() * level.possibilities.length)
+
+            if (level.possibilities.length > 0) {
+
+                let c = level.possibilities.splice(randomValue, 1)
+
+                if (c[0] == level.correctAnswer) {
+                    this.characters.push(new Character(c[0], true))
+                }
+                else {
+                    this.characters.push(new Character(c[0], false))
+                }
+            }
         }
     }
 
@@ -76,7 +90,7 @@ class Game {
             console.log("Correct answer!!")
             this.currentLevel += 1
             this.displayText(true)
-
+            this.createLevel(this.level2)
         }
         else {
             console.log("wrong answer :(")
@@ -93,8 +107,6 @@ class Game {
             this.icon.classList.remove("incorrect");
             this.icon.classList.add("correct");
             this.icon.innerText = "correct"
-            this.currentWordText.innerText = "Bus"
-
         }
         else {
             this.icon.innerText = "incorrect"
@@ -104,26 +116,6 @@ class Game {
     }
 
 
-    /* 
-    selects random characters by taking a random character from the character.possibilites array, then pushing to a character instance, 
-    also parces true or false depending if its the correct character. 
-    (bad way of doing it, you can see the correct answer when pressing "inspect element" in browser)
-    */
-    private selectRandomCharacter(level: Level) {
 
-        let randomValue = Math.floor(Math.random() * level.possibilities.length)
-
-        if (level.possibilities.length > 0) {
-
-            let c = level.possibilities.splice(randomValue, 1)
-
-            if (c[0] == this.level1.correctAnswer) {
-                this.characters.push(new Character(c[0], true))
-            }
-            else {
-                this.characters.push(new Character(c[0], false))
-            }
-        }
-    }
 }
 new Game()
