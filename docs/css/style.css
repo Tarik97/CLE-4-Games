@@ -58,6 +58,8 @@ word {
 }
 
 .icon {
+    min-width: 4rem;
+    min-height: 2rem;
     background-color: white;
     border-radius: 10px;
     padding: 0.5rem;
