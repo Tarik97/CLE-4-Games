@@ -1,23 +1,28 @@
 export class Character {
-    constructor(value, isCorrect) {
+    constructor(value, isCorrect, currenLevel) {
         this.x = 0;
         this.y = 0;
         this.speed = 0;
         this.value = '';
         this.isCorrect = false;
         this.value = value;
-        this.spawnElement = document.querySelector('charcontainer');
-        this.create(isCorrect);
+        this.charContainer = document.querySelector('charcontainer');
+        this.create(isCorrect, currenLevel);
     }
     update() {
     }
-    create(isCorrect) {
-        this.div = document.createElement("Characters");
+    create(isCorrect, currentLevel) {
+        this.Characters = document.createElement("characters" + currentLevel);
+        this.Characters.classList.add("characters");
         var myString = String(isCorrect);
-        this.div.id = myString;
-        this.spawnElement.appendChild(this.div);
-        this.div.innerText = this.value;
+        this.Characters.id = myString;
+        this.charContainer.appendChild(this.Characters);
+        this.Characters.innerText = this.value;
         this.x = 0;
+    }
+    removePreviousCharacters(previousLevel) {
+        let prevElement = document.querySelector("characters" + previousLevel);
+        this.charContainer.removeChild(prevElement);
     }
     checkOnBelt(a, b) {
         return (a.left <= b.right &&

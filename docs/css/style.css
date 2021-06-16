@@ -40,7 +40,7 @@ image-rendering: pixelated;
 
 }
 
-characters {
+.characters {
     text-align: center;
     border-radius: 10px;
     background-color: rgb(75, 52, 0);
@@ -57,7 +57,7 @@ word {
     color: white;
 }
 
-icon {
+.icon {
     font-size: 1rem;
 }
 
