@@ -16,7 +16,7 @@ export class Character {
         this.charContainer = document.querySelector('charcontainer')!;
         this.create(isCorrect, currenLevel, offset)
     }
-    
+
     update() : void {
         this.x += this.speed
       
@@ -24,7 +24,6 @@ export class Character {
             this.x = -this.character.clientWidth
         }
         this.character.style.transform = `translate(${this.x}px, 200px)`
-        
     }
 
     create(isCorrect : boolean, currentLevel : number, offset : number) : void{
@@ -53,7 +52,7 @@ export class Character {
             this.onBelt = true 
     }
     setSpeed() : void{
-        if(this.onBelt =true){
+        if(this.onBelt = true){
             this.speed = 2 
         }
     }
