@@ -10,7 +10,6 @@ export class Character {
         this.create(isCorrect, currenLevel, offset);
     }
     update() {
-        console.log("we movin' ");
         this.x += this.speed;
         if (this.x > window.innerWidth) {
             this.x = -this.character.clientWidth;

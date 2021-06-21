@@ -4,21 +4,20 @@ export class Character {
     x : number = 0 
     y : number = 0
     character : HTMLElement
+    charContainer : HTMLElement
     speed : number = 3
     value : string = ''
     onBelt : boolean
     isCorrect : boolean = false
-    charContainer : HTMLElement
+
 
     constructor(value : string, isCorrect : boolean, currenLevel : number, offset : number){
         this.value = value
         this.charContainer = document.querySelector('charcontainer')!;
         this.create(isCorrect, currenLevel, offset)
     }
-
-    //not working
+    
     update() : void {
-        console.log("we movin' ")
         this.x += this.speed
       
         if (this.x > window.innerWidth){
@@ -37,13 +36,11 @@ export class Character {
         this.character.classList.add("characters")
         var myString : string = String(isCorrect);
         this.character.id = myString
-        // this.charContainer.appendChild(this.character);
         this.character.innerText = this.value
     }
 
     public removePreviousCharacters(previousLevel : number){
         let prevElement : HTMLElement = document.querySelector("characters" + previousLevel)!;
-        // this.charContainer.removeChild(prevElement);
         this.character.remove()
     }
             

@@ -20,18 +20,8 @@ class Game {
     private characters: Character[] = []
     public currentLevel: number = 0
     private previousLevel: number = 0
-    /*
-    Level currently only usable
-    */
-    // public level1: Level 
-    // public level2: Level 
-    // public level3: Level 
-    // public level4: Level 
-    // public level5: Level 
 
     public constructor() {
-
-  
         this.levels.push(
             new Level("B_s", "u", ["a", "u", "o", "i", "x"]),
             new Level("T_s", "a", ["r", "a", "i", "u", "v"]),
@@ -58,6 +48,8 @@ class Game {
             //sending the level1 variable to the createLevel function
             this.createLevel(this.levels[this.currentLevel])
         }
+        new Belt;
+
 
         this.gameloop();
     }
@@ -124,8 +116,6 @@ class Game {
             for (let i: number = 0; i < this.characters.length; i++) {
                 // this.characters.slice
                 this.characters[i].removePreviousCharacters(this.previousLevel)
-                console.log("i = " + i)
-
             }
             this.characters = []
         }
@@ -138,15 +128,13 @@ class Game {
     works on my machine ¯\_(ツ)_/¯
     */
     private clickHandler = (e: Event) => {
-        let target: HTMLElement = e.target
+        let target : HTMLElement = e.target
         if (target.id == "true") {
-            console.log("Correct answer!!")
             this.currentLevel += 1
             this.displayText(true)
             this.createLevel(this.levels[this.currentLevel])
         }
         else {
-            console.log("wrong answer :(")
             this.displayText(false)
         }
     }

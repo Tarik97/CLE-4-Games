@@ -1,5 +1,6 @@
 import { Level } from "./Level.js";
 import { Character } from "./Character.js";
+import { Belt } from "./Belt.js";
 class Game {
     constructor() {
         this.levels = [];
@@ -9,13 +10,11 @@ class Game {
         this.clickHandler = (e) => {
             let target = e.target;
             if (target.id == "true") {
-                console.log("Correct answer!!");
                 this.currentLevel += 1;
                 this.displayText(true);
                 this.createLevel(this.levels[this.currentLevel]);
             }
             else {
-                console.log("wrong answer :(");
                 this.displayText(false);
             }
         };
@@ -29,6 +28,7 @@ class Game {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
             this.createLevel(this.levels[this.currentLevel]);
         }
+        new Belt;
         this.gameloop();
     }
     gameloop() {
@@ -63,7 +63,6 @@ class Game {
             this.wordElement.removeChild(previousWordText);
             for (let i = 0; i < this.characters.length; i++) {
                 this.characters[i].removePreviousCharacters(this.previousLevel);
-                console.log("i = " + i);
             }
             this.characters = [];
         }

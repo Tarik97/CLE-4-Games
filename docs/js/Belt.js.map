@@ -1,1 +1,1 @@
-{"version":3,"file":"Belt.js","sourceRoot":"","sources":["../../dev/Belt.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,IAAI;CAEhB"}
+{"version":3,"file":"Belt.js","sourceRoot":"","sources":["../../dev/Belt.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,IAAI;IAKb;QACI,IAAI,CAAC,aAAa,GAAG,QAAQ,CAAC,aAAa,CAAC,eAAe,CAAE,CAAA;QAC7D,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC,aAAa,CAAC,UAAU,CAAC,CAAA;QAClD,IAAI,CAAC,SAAS,EAAE,CAAA;IACpB,CAAC;IAED,SAAS;QACL,IAAI,CAAC,SAAS,GAAI,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,MAAM,EAAE,GAAG,CAAC,CAAE,GAAG,CAAC,CAAA;IACxD,CAAC;CACJ"}
