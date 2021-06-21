@@ -7,7 +7,7 @@ export class Belt {
 
     constructor() {
         this.beltContainer = document.querySelector("beltContainer")!
-        this.beltElem = document.createElement("beltElem")
+        this.beltElem = document.querySelector("beltElem")!
         this.spawnBelt()
     }
 
