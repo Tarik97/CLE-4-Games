@@ -1,9 +1,10 @@
 import { Level } from "./Level.js";
 import { Character } from "./Character.js";
-import { Belt } from "./Belt.js";
+import { Belt as Belt } from "./Belt.js";
 class Game {
     constructor() {
         this.levels = [];
+        this.belts = [];
         this.characters = [];
         this.currentLevel = 0;
         this.previousLevel = 0;
@@ -28,12 +29,28 @@ class Game {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
             this.createLevel(this.levels[this.currentLevel]);
         }
-        new Belt;
+        for (let i = 0; i < 1; i++) {
+            if (i % 2 == 0) {
+                this.belts.push(new Belt(i * 50, true));
+            }
+            else {
+                this.belts.push(new Belt(i * 50, false));
+            }
+        }
         this.gameloop();
     }
     gameloop() {
-        for (let i = 0; i < this.characters.length; i++) {
-            this.characters[i].update();
+        for (const character of this.characters) {
+            for (const belt of this.belts) {
+                console.log(this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect()));
+                if (this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect())) {
+                    character.onBelt = true;
+                }
+                else {
+                    character.onBelt = false;
+                }
+            }
+            character.update();
         }
         requestAnimationFrame(() => this.gameloop());
     }
@@ -80,6 +97,9 @@ class Game {
             this.icon.innerText = "";
             this.icon.innerText = "incorrect";
         }
+    }
+    checkOnBelt(characterCollider, beltCollider) {
+        return Boolean(characterCollider.bottom <= beltCollider.top && beltCollider.top <= characterCollider.bottom);
     }
 }
 new Game();

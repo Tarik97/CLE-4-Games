@@ -3,7 +3,7 @@ import { Hook } from "./Hook.js"
 import { Tube } from "./Tube.js"
 import { Level } from "./Level.js"
 import { Character } from "./Character.js"
-import {Belt} from "./Belt.js" 
+import { Belt as Belt } from "./Belt.js"
 
 class Game {
     /*
@@ -16,7 +16,7 @@ class Game {
     private levels: Level[] = []
     private hook: Hook
     private tube: Tube
-    private belt : Belt
+    private belts: Belt[] = []
     private characters: Character[] = []
     public currentLevel: number = 0
     private previousLevel: number = 0
@@ -48,15 +48,30 @@ class Game {
             //sending the level1 variable to the createLevel function
             this.createLevel(this.levels[this.currentLevel])
         }
-        new Belt;
 
+        for (let i = 0; i < 1; i++) {
+            if (i % 2 == 0) {
+                this.belts.push(new Belt(i * 50, true));
+            } else {
+                this.belts.push(new Belt(i * 50, false));
+            }
 
+        }
         this.gameloop();
     }
 
-    gameloop(){
-        for (let i: number = 0; i < this.characters.length; i++) { 
-        this.characters[i].update();
+    gameloop() {
+
+        for (const character of this.characters) {
+            for (const belt of this.belts) {
+                console.log(this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect()))
+                if (this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect())) {
+                    character.onBelt = true
+                } else {
+                    character.onBelt = false
+                }
+            }
+            character.update()
         }
         requestAnimationFrame(() => this.gameloop())
     }
@@ -128,7 +143,7 @@ class Game {
     works on my machine ¯\_(ツ)_/¯
     */
     private clickHandler = (e: Event) => {
-        let target : HTMLElement = e.target
+        let target: HTMLElement = e.target
         if (target.id == "true") {
             this.currentLevel += 1
             this.displayText(true)
@@ -156,6 +171,11 @@ class Game {
             this.icon.innerText = ""
             this.icon.innerText = "incorrect"
         }
+    }
+
+    private checkOnBelt(characterCollider: ClientRect, beltCollider: ClientRect): boolean {
+        return Boolean(characterCollider.bottom <= beltCollider.top && beltCollider.top <= characterCollider.bottom)
+
     }
 }
 new Game()

@@ -11,14 +11,16 @@
     --clr_primary400: hsl(0, 0%, 60%);
     --clr_primary200: hsl(0, 0%, 90%);
 
-    --tilesize: 4rem;
+    --tilesize: 3rem;
 }
+
 
 html {
     min-width: 100vw;
     min-height: 100vh;
     font-family: "roboto", sans-serif;
     font-size: 3rem;
+    overflow: hidden;
 }
 
 .background {
@@ -35,10 +37,6 @@ image-rendering: pixelated;
 
 }
 
-.char--container {
-    /* display: flex; */
-
-}
 
 .characters {
     display: block;
@@ -73,10 +71,18 @@ word {
 }
 
 .correct {
-
     color: green;
 }
 
 .incorrect {
     color: red;
+}
+
+belt {
+    position: absolute
+}
+
+
+.flipped {
+    transform: scaleX(-1);
 }

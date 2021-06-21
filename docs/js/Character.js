@@ -2,7 +2,8 @@ export class Character {
     constructor(value, isCorrect, currenLevel, offset) {
         this.x = 0;
         this.y = 0;
-        this.speed = 3;
+        this.xSpeed = 0;
+        this.ySpeed = 3;
         this.value = '';
         this.isCorrect = false;
         this.value = value;
@@ -10,11 +11,23 @@ export class Character {
         this.create(isCorrect, currenLevel, offset);
     }
     update() {
-        this.x += this.speed;
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        if (this.onBelt == false) {
+            this.xSpeed = 0;
+            this.ySpeed = 3;
+        }
+        else {
+            this.xSpeed = 3;
+            this.ySpeed = 0;
+        }
         if (this.x > window.innerWidth) {
             this.x = -this.character.clientWidth;
         }
-        this.character.style.transform = `translate(${this.x}px, 200px)`;
+        if (this.y > window.innerHeight) {
+            this.y = -this.character.clientHeight;
+        }
+        this.character.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     create(isCorrect, currentLevel, offset) {
         this.character = document.createElement("characters" + currentLevel);
@@ -29,17 +42,8 @@ export class Character {
         let prevElement = document.querySelector("characters" + previousLevel);
         this.character.remove();
     }
-    checkOnBelt(a, b) {
-        return (a.left <= b.right &&
-            b.left <= a.right &&
-            a.top <= b.bottom &&
-            b.top <= a.bottom);
-        this.onBelt = true;
-    }
-    setSpeed() {
-        if (this.onBelt = true) {
-            this.speed = 2;
-        }
+    getBoundingRect() {
+        return this.character.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=character.js.map
