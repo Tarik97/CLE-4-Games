@@ -3,6 +3,7 @@ import { Hook } from "./Hook.js"
 import { Tube } from "./Tube.js"
 import { Level } from "./Level.js"
 import { Character } from "./Character.js"
+import {Belt} from "./Belt.js" 
 
 class Game {
     /*
@@ -15,6 +16,7 @@ class Game {
     private levels: Level[] = []
     private hook: Hook
     private tube: Tube
+    private belt : Belt
     private characters: Character[] = []
     public currentLevel: number = 0
     private previousLevel: number = 0
