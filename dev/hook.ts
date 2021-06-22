@@ -7,14 +7,44 @@ export class Hook {
     x: number
     y: number
 
-    constructor() {
+    targetX: number
+    targetY: number
 
+    // mousex: number
+    // mousey: number
+
+    constructor() {
+        document.body.addEventListener("click", this.clickHandler)
         this.create()
 
     }
 
+    shootHook(mousex: number, mousey: number) {
+        this.targetX = mousex - this.div.clientWidth / 2
+        this.targetY = mousey - this.div.clientHeight / 2
+    }
+
     update() {
 
+        if (this.x < this.targetX) {
+            this.x = this.x + 1
+            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+
+        if (this.y < this.targetY){
+            this.y = this.y + 1
+            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+        if (this.x > this.targetX) {
+            this.x = this.x - 1
+            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+
+        if (this.y > this.targetY){
+            this.y = this.y - 1
+            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+           
     }
 
     create() {
@@ -29,7 +59,9 @@ export class Hook {
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
 
-    shootHook(mousex: number, mousey: number) {
-        this.div.style.transform = `translate(${mousex - this.div.clientWidth / 2}px, ${mousey - this.div.clientHeight / 2}px)`
+    clickHandler = (e: MouseEvent) => {
+        this.shootHook(e.clientX, e.clientY)
     }
+
+  
 }

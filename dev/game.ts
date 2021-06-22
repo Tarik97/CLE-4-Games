@@ -157,7 +157,9 @@ class Game {
     works on my machine ¯\_(ツ)_/¯
     */
     private clickHandler = (e: MouseEvent) => {
-        this.hook.shootHook(e.clientX, e.clientY)
+
+        // this.hook.shootHook(e.clientX, e.clientY)
+
         let target: EventTarget | null = e.target
         if (target.id! == "true") {
             this.currentLevel += 1

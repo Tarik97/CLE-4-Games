@@ -10,7 +10,6 @@ class Game {
         this.currentLevel = 0;
         this.previousLevel = 0;
         this.clickHandler = (e) => {
-            this.hook.shootHook(e.clientX, e.clientY);
             let target = e.target;
             if (target.id == "true") {
                 this.currentLevel += 1;
