@@ -94,13 +94,13 @@ class Game {
             this.icon.classList.remove("incorrect");
             this.icon.classList.add("correct");
             this.icon.innerText = "";
-            this.icon.innerText = "correct";
+            this.icon.innerText = "Ja! Dat is goed!";
         }
         else {
             this.icon.classList.remove("correct");
             this.icon.classList.add("incorrect");
             this.icon.innerText = "";
-            this.icon.innerText = "incorrect";
+            this.icon.innerText = "Probeer het nog een keer!";
         }
     }
     checkOnBelt(characterCollider, beltCollider) {
