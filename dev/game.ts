@@ -34,12 +34,6 @@ class Game {
             new Level("t_st", "e", ["e", "u", "g", "i", "q"])
         );
 
-       
-
-
-
-        //where the current word and icon gets appended to
-
         //the icon element
         this.icon = document.createElement("icon" + this.currentLevel)
         //appending....
@@ -62,7 +56,7 @@ class Game {
             this.createLevel(this.levels[this.currentLevel])
         }
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             if (i % 2 == 0) {
                 this.belts.push(new Belt(i * 50, true));
             } else {
@@ -85,6 +79,7 @@ class Game {
                 }
             }
             character.update()
+            Hook.update()
         }
         requestAnimationFrame(() => this.gameloop())
     }
@@ -106,7 +101,7 @@ class Game {
         //appending....
         document.body.appendChild(this.wordElement);
 
-        this.wordX = window.innerWidth / 2
+        this.wordX = window.innerWidth - this.wordElement.clientWidth - 10
         this.wordY = window.innerHeight - this.wordElement.clientHeight
 
         this.wordElement.style.transform = `translate(${this.wordX}px, ${this.wordY}px)`
@@ -143,9 +138,9 @@ class Game {
             this.previousLevel = this.currentLevel - 1
 
             //remove previous level
-            let previousWordText: HTMLElement = document.querySelector("currentWordText" + this.previousLevel)!;
+            // let previousWordText: HTMLElement = document.querySelector("wordElement" + this.previousLevel)!;
 
-            this.wordElement.removeChild(previousWordText);
+            document.body.removeChild(this.wordElement);
 
             for (let i: number = 0; i < this.characters.length; i++) {
                 // this.characters.slice
