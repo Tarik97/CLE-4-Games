@@ -53,22 +53,20 @@ image-rendering: pixelated;
     box-shadow: 10px 10px 10px black;
 }
 
-wordElement {
+.wordElement {
     position: absolute;
     font-size: 2rem;
     color: white;
 }
 
 .icon {
+    position: absolute;
     min-width: 4rem;
     min-height: 2rem;
     background-color: white;
     border-radius: 10px;
     padding: 0.5rem;
-    margin: 1rem;
     font-size: 1rem;
-    position: absolute;
-    bottom: 0;
 }
 
 .correct {

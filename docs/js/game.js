@@ -22,13 +22,12 @@ class Game {
             }
         };
         this.levels.push(new Level("B_s", "u", ["a", "t", "h", "u", "x"]), new Level("T_s", "a", ["r", "a", "i", "u", "v"]), new Level("P_n", "e", ["h", "f", "e", "o", "a"]), new Level("G_m", "u", ["p", "u", "o", "i", "q"]), new Level("t_st", "e", ["e", "u", "g", "i", "q"]));
-        this.wordElement = document.createElement("wordElement");
-        document.body.appendChild(this.wordElement);
-        this.wordElement.style.transform = "translate(200px, 600px)";
         this.icon = document.createElement("icon" + this.currentLevel);
         this.icon.classList.add("icon");
-        this.wordElement.appendChild(this.icon);
-        this.icon.style.transform = "translate(500px, 45px)";
+        document.body.appendChild(this.icon);
+        this.iconX = 20;
+        this.iconY = window.innerHeight - this.icon.clientHeight - 20;
+        this.icon.style.transform = `translate(${this.iconX}px, ${this.iconY}px)`;
         document.body.addEventListener("click", this.clickHandler);
         if (this.currentLevel == 0) {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
@@ -62,9 +61,13 @@ class Game {
     createLevel(level) {
         this.deletePreviousLevel();
         length = level.possibilities.length;
-        this.currentWordText = document.createElement("currentWordText" + this.currentLevel);
-        this.currentWordText.innerText = level.word;
-        this.wordElement.appendChild(this.currentWordText);
+        this.wordElement = document.createElement("wordElement" + this.currentLevel);
+        this.wordElement.innerText = level.word;
+        this.wordElement.classList.add("wordElement");
+        document.body.appendChild(this.wordElement);
+        this.wordX = window.innerWidth / 2;
+        this.wordY = window.innerHeight - this.wordElement.clientHeight;
+        this.wordElement.style.transform = `translate(${this.wordX}px, ${this.wordY}px)`;
         for (let i = 0; i < length; i++) {
             let randomValue = Math.floor(Math.random() * level.possibilities.length);
             if (level.possibilities.length > 0) {

@@ -11,7 +11,6 @@ class Game {
     */
     spawnElement: HTMLElement
     wordElement: HTMLElement
-    currentWordText: HTMLElement
     icon: HTMLElement
     private levels: Level[] = []
     private hook: Hook
@@ -21,6 +20,11 @@ class Game {
     public currentLevel: number = 0
     private previousLevel: number = 0
 
+    private wordX : number
+    private wordY : number
+    private iconX : number
+    private iconY : number
+
     public constructor() {
         this.levels.push(
             new Level("B_s", "u", ["a", "t", "h", "u", "x"]),
@@ -29,17 +33,23 @@ class Game {
             new Level("G_m", "u", ["p", "u", "o", "i", "q"]),
             new Level("t_st", "e", ["e", "u", "g", "i", "q"])
         );
+
+       
+
+
+
         //where the current word and icon gets appended to
-        this.wordElement = document.createElement("wordElement")!
-        document.body.appendChild(this.wordElement)
-        this.wordElement.style.transform = "translate(200px, 600px)"
 
         //the icon element
         this.icon = document.createElement("icon" + this.currentLevel)
         //appending....
         this.icon.classList.add("icon")
-        this.wordElement.appendChild(this.icon);
-        this.icon.style.transform = "translate(500px, 45px)"
+        document.body.appendChild(this.icon);
+
+        this.iconX = 20
+        this.iconY = window.innerHeight - this.icon.clientHeight - 20
+
+        this.icon.style.transform = `translate(${this.iconX}px, ${this.iconY}px)`
 
         //adding click event listener
         document.body.addEventListener("click", this.clickHandler)
@@ -88,11 +98,18 @@ class Game {
 
 
         //the element wich has the text in it
-        this.currentWordText = document.createElement("currentWordText" + this.currentLevel)
+        this.wordElement = document.createElement("wordElement" + this.currentLevel)
         //inner text will be that of the current level's (level1) word
-        this.currentWordText.innerText = level.word
+        this.wordElement.innerText = level.word
+
+        this.wordElement.classList.add("wordElement")
         //appending....
-        this.wordElement.appendChild(this.currentWordText);
+        document.body.appendChild(this.wordElement);
+
+        this.wordX = window.innerWidth / 2
+        this.wordY = window.innerHeight - this.wordElement.clientHeight
+
+        this.wordElement.style.transform = `translate(${this.wordX}px, ${this.wordY}px)`
 
 
         for (let i: number = 0; i < length; i++) {
