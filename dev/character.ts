@@ -2,20 +2,28 @@ import { transform } from "../node_modules/typescript/lib/typescript"
 
 export class Character {
     x : number = 0 
-    y : number = 0
-    character : HTMLElement
-    charContainer : HTMLElement
+    y : number = 50
     xSpeed : number = 0
     ySpeed : number = 3
-    value : string = ''
+    character : HTMLElement
+    charContainer : HTMLElement
+    img : HTMLElement
     onBelt : boolean
     isCorrect : boolean = false
+    value : string = ''
 
 
     constructor(value : string, isCorrect : boolean, currenLevel : number, offset : number){
         this.value = value
         this.charContainer = document.querySelector('charcontainer')!;
         this.create(isCorrect, currenLevel, offset)
+
+        this.img = document.createElement("img")
+        this.img.classList.add("tile")
+        this.img.classList.add("crate")
+        this.img.setAttribute("src", "../images/crate.png")
+        this.character.appendChild(this.img)
+        this.img.style.transform = `translate(-200px, px)`
     }
 
     update() : void {
@@ -41,6 +49,7 @@ export class Character {
 
     create(isCorrect : boolean, currentLevel : number, offset : number) : void{
         this.character = document.createElement("characters" + currentLevel)
+
         document.body.appendChild(this.character)
 
         this.x = offset * 150

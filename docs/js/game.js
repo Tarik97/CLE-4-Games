@@ -33,7 +33,7 @@ class Game {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
             this.createLevel(this.levels[this.currentLevel]);
         }
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             if (i % 2 == 0) {
                 this.belts.push(new Belt(i * 50, true));
             }
@@ -55,6 +55,7 @@ class Game {
                 }
             }
             character.update();
+            Hook.update();
         }
         requestAnimationFrame(() => this.gameloop());
     }
@@ -65,7 +66,7 @@ class Game {
         this.wordElement.innerText = level.word;
         this.wordElement.classList.add("wordElement");
         document.body.appendChild(this.wordElement);
-        this.wordX = window.innerWidth / 2;
+        this.wordX = window.innerWidth - this.wordElement.clientWidth - 10;
         this.wordY = window.innerHeight - this.wordElement.clientHeight;
         this.wordElement.style.transform = `translate(${this.wordX}px, ${this.wordY}px)`;
         for (let i = 0; i < length; i++) {
@@ -84,8 +85,7 @@ class Game {
     deletePreviousLevel() {
         if (this.currentLevel > 0) {
             this.previousLevel = this.currentLevel - 1;
-            let previousWordText = document.querySelector("currentWordText" + this.previousLevel);
-            this.wordElement.removeChild(previousWordText);
+            document.body.removeChild(this.wordElement);
             for (let i = 0; i < this.characters.length; i++) {
                 this.characters[i].removePreviousCharacters(this.previousLevel);
             }

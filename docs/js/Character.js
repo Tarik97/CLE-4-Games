@@ -1,14 +1,20 @@
 export class Character {
     constructor(value, isCorrect, currenLevel, offset) {
         this.x = 0;
-        this.y = 0;
+        this.y = 50;
         this.xSpeed = 0;
         this.ySpeed = 3;
-        this.value = '';
         this.isCorrect = false;
+        this.value = '';
         this.value = value;
         this.charContainer = document.querySelector('charcontainer');
         this.create(isCorrect, currenLevel, offset);
+        this.img = document.createElement("img");
+        this.img.classList.add("tile");
+        this.img.classList.add("crate");
+        this.img.setAttribute("src", "../images/crate.png");
+        this.character.appendChild(this.img);
+        this.img.style.transform = `translate(-200px, px)`;
     }
     update() {
         this.x += this.xSpeed;

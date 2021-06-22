@@ -4,8 +4,8 @@ import { textChangeRangeIsUnchanged } from "../node_modules/typescript/lib/types
 
 export class Belt {
 
-    private x: number
-    private y: number
+    public x: number
+    public y: number
     public beltSpeed: number
     private beltLenght: number
     private belt: HTMLElement
@@ -25,7 +25,7 @@ export class Belt {
 
     spawnBelt(offSet: number, even: boolean) {
        
-        this.beltLenght = 7
+        this.beltLenght = 10
 
         this.beltSpeed = Math.floor(Math.random() * 9) + 1
         this.belt = document.createElement("belt")
@@ -46,13 +46,13 @@ export class Belt {
         }
 
         if (even){
-            this.y = offSet * 5 + 300
-            this.x = offSet - 100
+            this.y = offSet * 3.5 + 150
+            this.x = window.innerWidth/10
             this.belt.style.transform = `translate(${this.x}px, ${this.y}px)`
         } else {
             this.beltSpeed = this.beltSpeed * -1
-            this.y = offSet * 5 + 200
-            this.x = offSet + 100
+            this.y = offSet * 3.5 + 150
+            this.x = window.innerWidth/10 + 200
             this.belt.style.transform = `translate(${this.x}px, ${this.y}px)`
         }
       
