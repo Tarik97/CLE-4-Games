@@ -55,7 +55,7 @@ class Game {
                 }
             }
             character.update();
-            Hook.update();
+            this.hook.update();
         }
         requestAnimationFrame(() => this.gameloop());
     }
