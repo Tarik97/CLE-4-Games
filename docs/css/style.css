@@ -54,6 +54,7 @@ image-rendering: pixelated;
 }
 
 wordElement {
+    position: absolute;
     font-size: 2rem;
     color: white;
 }
@@ -84,6 +85,7 @@ belt {
 
 hook {
     position: absolute;
+    z-index: 2;
 }
 
 

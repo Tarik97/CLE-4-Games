@@ -32,12 +32,14 @@ class Game {
         //where the current word and icon gets appended to
         this.wordElement = document.createElement("wordElement")!
         document.body.appendChild(this.wordElement)
+        this.wordElement.style.transform = "translate(200px, 600px)"
 
         //the icon element
         this.icon = document.createElement("icon" + this.currentLevel)
         //appending....
         this.icon.classList.add("icon")
         this.wordElement.appendChild(this.icon);
+        this.icon.style.transform = "translate(500px, 45px)"
 
         //adding click event listener
         document.body.addEventListener("click", this.clickHandler)

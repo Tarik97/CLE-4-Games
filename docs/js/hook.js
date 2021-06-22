@@ -12,7 +12,7 @@ export class Hook {
     }
     shootHook(mousex, mousey) {
         console.log([mousex, mousey]);
-        this.div.style.transform = `translate(${mousex - 220}px, ${mousey - 60}px)`;
+        this.div.style.transform = `translate(${mousex}px, ${mousey}px)`;
     }
 }
 //# sourceMappingURL=Hook.js.map
