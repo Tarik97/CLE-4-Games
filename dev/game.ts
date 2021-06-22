@@ -23,14 +23,15 @@ class Game {
 
     public constructor() {
         this.levels.push(
-            new Level("B_s", "u", ["a", "u", "o", "i", "x"]),
+            new Level("B_s", "u", ["a", "t", "h", "u", "x"]),
             new Level("T_s", "a", ["r", "a", "i", "u", "v"]),
             new Level("P_n", "e", ["h", "f", "e", "o", "a"]),
             new Level("G_m", "u", ["p", "u", "o", "i", "q"]),
             new Level("t_st", "e", ["e", "u", "g", "i", "q"])
         );
         //where the current word and icon gets appended to
-        this.wordElement = document.querySelector("word")!
+        this.wordElement = document.createElement("wordElement")!
+        document.body.appendChild(this.wordElement)
 
         //the icon element
         this.icon = document.createElement("icon" + this.currentLevel)
@@ -49,7 +50,7 @@ class Game {
             this.createLevel(this.levels[this.currentLevel])
         }
 
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
             if (i % 2 == 0) {
                 this.belts.push(new Belt(i * 50, true));
             } else {
@@ -57,6 +58,7 @@ class Game {
             }
 
         }
+        this.hook = new Hook
         this.gameloop();
     }
 
@@ -64,7 +66,6 @@ class Game {
 
         for (const character of this.characters) {
             for (const belt of this.belts) {
-                console.log(this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect()))
                 if (this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect())) {
                     character.onBelt = true
                 } else {
@@ -124,9 +125,8 @@ class Game {
 
             //remove previous level
             let previousWordText: HTMLElement = document.querySelector("currentWordText" + this.previousLevel)!;
-            // let previousIcon : HTMLElement = document.querySelector("icon" + this.previousLevel)!;
+
             this.wordElement.removeChild(previousWordText);
-            // this.wordElement.removeChild(previousIcon);
 
             for (let i: number = 0; i < this.characters.length; i++) {
                 // this.characters.slice
@@ -142,9 +142,10 @@ class Game {
 
     works on my machine ¯\_(ツ)_/¯
     */
-    private clickHandler = (e: Event) => {
-        let target: HTMLElement = e.target
-        if (target.id == "true") {
+    private clickHandler = (e: MouseEvent) => {
+        this.hook.shootHook(e.clientX, e.clientY)
+        let target: EventTarget | null = e.target
+        if (target.id! == "true") {
             this.currentLevel += 1
             this.displayText(true)
             this.createLevel(this.levels[this.currentLevel])

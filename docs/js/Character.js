@@ -14,12 +14,12 @@ export class Character {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
         if (this.onBelt == false) {
-            this.xSpeed = 0;
-            this.ySpeed = 3;
-        }
-        else {
             this.xSpeed = 3;
             this.ySpeed = 0;
+        }
+        else {
+            this.xSpeed = 0;
+            this.ySpeed = 3;
         }
         if (this.x > window.innerWidth) {
             this.x = -this.character.clientWidth;

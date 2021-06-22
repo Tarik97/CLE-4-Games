@@ -53,7 +53,7 @@ image-rendering: pixelated;
     box-shadow: 10px 10px 10px black;
 }
 
-word {
+wordElement {
     font-size: 2rem;
     color: white;
 }
@@ -80,6 +80,10 @@ word {
 
 belt {
     position: absolute
+}
+
+hook {
+    position: absolute;
 }
 
 

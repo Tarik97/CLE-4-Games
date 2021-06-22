@@ -25,14 +25,13 @@ export class Belt {
 
     spawnBelt(offSet: number, even: boolean) {
        
-        this.beltLenght = 3
+        this.beltLenght = 7
 
         this.beltSpeed = Math.floor(Math.random() * 9) + 1
         this.belt = document.createElement("belt")
 
         //adding images (individual sprites)
         for (let i = 0; i < this.beltLenght; i++) {
-
             this.img = document.createElement("img")
             this.img.classList.add("tile")
             if (i == 0) {
@@ -61,6 +60,6 @@ export class Belt {
     }
 
     getBoundingRect() : DOMRect {
-        return this.belt.getBoundingClientRect();
+        return this.img.getBoundingClientRect();
     }
 }

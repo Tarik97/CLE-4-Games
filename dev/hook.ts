@@ -1,24 +1,24 @@
 export class Hook {
 
     // letter : Letter
-    outerDiv : HTMLElement;
-    div : HTMLElement;
-    
+    div: HTMLElement;
+    img: HTMLElement;
+
     constructor() {
         this.create();
     }
 
     create() {
-        this.outerDiv = document.createElement("outerDiv");
         this.div = document.createElement("hook");
-
-        this.outerDiv.appendChild(this.div);
-        document.body.appendChild(this.outerDiv);
+        this.img = document.createElement("img")
+        this.img.classList.add("tile")
+        this.img.setAttribute("src", "../images/belt1.png")
+        this.div.appendChild(this.img)
+        document.body.appendChild(this.div);
     }
 
-    shootHook() {
-        // if(this.letter = correctChar) {
-
-        // }
+    shootHook(mousex: number, mousey: number) {
+        console.log([mousex, mousey]); // Prints data
+        this.div.style.transform = `translate(${mousex - 220}px, ${mousey - 60}px)`
     }
 }

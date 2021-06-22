@@ -1,3 +1,4 @@
+import { Hook } from "./Hook.js";
 import { Level } from "./Level.js";
 import { Character } from "./Character.js";
 import { Belt as Belt } from "./Belt.js";
@@ -9,6 +10,7 @@ class Game {
         this.currentLevel = 0;
         this.previousLevel = 0;
         this.clickHandler = (e) => {
+            this.hook.shootHook(e.clientX, e.clientY);
             let target = e.target;
             if (target.id == "true") {
                 this.currentLevel += 1;
@@ -19,8 +21,9 @@ class Game {
                 this.displayText(false);
             }
         };
-        this.levels.push(new Level("B_s", "u", ["a", "u", "o", "i", "x"]), new Level("T_s", "a", ["r", "a", "i", "u", "v"]), new Level("P_n", "e", ["h", "f", "e", "o", "a"]), new Level("G_m", "u", ["p", "u", "o", "i", "q"]), new Level("t_st", "e", ["e", "u", "g", "i", "q"]));
-        this.wordElement = document.querySelector("word");
+        this.levels.push(new Level("B_s", "u", ["a", "t", "h", "u", "x"]), new Level("T_s", "a", ["r", "a", "i", "u", "v"]), new Level("P_n", "e", ["h", "f", "e", "o", "a"]), new Level("G_m", "u", ["p", "u", "o", "i", "q"]), new Level("t_st", "e", ["e", "u", "g", "i", "q"]));
+        this.wordElement = document.createElement("wordElement");
+        document.body.appendChild(this.wordElement);
         this.icon = document.createElement("icon" + this.currentLevel);
         this.icon.classList.add("icon");
         this.wordElement.appendChild(this.icon);
@@ -29,7 +32,7 @@ class Game {
             this.spawnElement = document.querySelector('charcontainer' + this.currentLevel);
             this.createLevel(this.levels[this.currentLevel]);
         }
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
             if (i % 2 == 0) {
                 this.belts.push(new Belt(i * 50, true));
             }
@@ -37,12 +40,12 @@ class Game {
                 this.belts.push(new Belt(i * 50, false));
             }
         }
+        this.hook = new Hook;
         this.gameloop();
     }
     gameloop() {
         for (const character of this.characters) {
             for (const belt of this.belts) {
-                console.log(this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect()));
                 if (this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect())) {
                     character.onBelt = true;
                 }

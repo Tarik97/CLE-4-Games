@@ -3,7 +3,7 @@ export class Belt {
         this.spawnBelt(offSet, even);
     }
     spawnBelt(offSet, even) {
-        this.beltLenght = 3;
+        this.beltLenght = 7;
         this.beltSpeed = Math.floor(Math.random() * 9) + 1;
         this.belt = document.createElement("belt");
         for (let i = 0; i < this.beltLenght; i++) {
@@ -35,7 +35,7 @@ export class Belt {
         document.body.appendChild(this.belt);
     }
     getBoundingRect() {
-        return this.belt.getBoundingClientRect();
+        return this.img.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=Belt.js.map
