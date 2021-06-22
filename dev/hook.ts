@@ -1,6 +1,5 @@
 export class Hook {
 
-    // letter : Letter
     div: HTMLElement
     img: HTMLElement
 
@@ -11,9 +10,6 @@ export class Hook {
     targetY: number
 
     speed: number = 2
-
-    // mousex: number
-    // mousey: number
 
     constructor() {
         document.body.addEventListener("click", this.clickHandler)

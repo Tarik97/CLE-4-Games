@@ -71,13 +71,11 @@ class Game {
     gameloop() {
 
         for (const character of this.characters) {
-            for (const belt of this.belts) {
-                if (this.checkOnBelt(character.getBoundingRect(), belt.getBoundingRect())) {
+                if (this.checkOnBelt(character.getBoundingRect(), this.belts[0].getBoundingRect())) {
                     character.onBelt = true
                 } else {
                     character.onBelt = false
                 }
-            }
             character.update()
             this.hook.update()
         }

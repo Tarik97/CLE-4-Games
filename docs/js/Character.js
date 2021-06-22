@@ -1,7 +1,7 @@
 export class Character {
     constructor(value, isCorrect, currenLevel, offset) {
         this.x = 0;
-        this.y = 50;
+        this.y = 0;
         this.xSpeed = 0;
         this.ySpeed = 3;
         this.isCorrect = false;
@@ -17,9 +17,7 @@ export class Character {
         this.img.style.transform = `translate(-200px, px)`;
     }
     update() {
-        this.x += this.xSpeed;
-        this.y += this.ySpeed;
-        if (this.onBelt == false) {
+        if (this.onBelt) {
             this.xSpeed = 3;
             this.ySpeed = 0;
         }
@@ -33,6 +31,8 @@ export class Character {
         if (this.y > window.innerHeight) {
             this.y = -this.character.clientHeight;
         }
+        this.x = this.x + this.xSpeed;
+        this.y = this.y + this.ySpeed;
         this.character.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     create(isCorrect, currentLevel, offset) {
