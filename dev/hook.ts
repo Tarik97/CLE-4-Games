@@ -10,6 +10,8 @@ export class Hook {
     targetX: number
     targetY: number
 
+    speed: number = 2
+
     // mousex: number
     // mousey: number
 
@@ -27,24 +29,21 @@ export class Hook {
     update() {
 
         if (this.x < this.targetX) {
-            this.x = this.x + 1
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
-        }
+            this.x = this.x + this.speed
 
-        if (this.y < this.targetY){
-            this.y = this.y + 1
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        }
+        if (this.y < this.targetY) {
+            this.y = this.y + this.speed
+
         }
         if (this.x > this.targetX) {
-            this.x = this.x - 1
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
-        }
+            this.x = this.x - this.speed
 
-        if (this.y > this.targetY){
-            this.y = this.y - 1
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
         }
-           
+        if (this.y > this.targetY) {
+            this.y = this.y - this.speed
+        }
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
 
     create() {
@@ -63,5 +62,5 @@ export class Hook {
         this.shootHook(e.clientX, e.clientY)
     }
 
-  
+
 }

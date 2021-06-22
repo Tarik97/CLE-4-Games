@@ -1,5 +1,6 @@
 export class Hook {
     constructor() {
+        this.speed = 2;
         this.clickHandler = (e) => {
             this.shootHook(e.clientX, e.clientY);
         };
@@ -12,21 +13,18 @@ export class Hook {
     }
     update() {
         if (this.x < this.targetX) {
-            this.x = this.x + 1;
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            this.x = this.x + this.speed;
         }
         if (this.y < this.targetY) {
-            this.y = this.y + 1;
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            this.y = this.y + this.speed;
         }
         if (this.x > this.targetX) {
-            this.x = this.x - 1;
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            this.x = this.x - this.speed;
         }
         if (this.y > this.targetY) {
-            this.y = this.y - 1;
-            this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            this.y = this.y - this.speed;
         }
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     create() {
         this.div = document.createElement("hook");
