@@ -12,7 +12,7 @@ export class Character {
         this.img = document.createElement("img");
         this.img.classList.add("tile");
         this.img.classList.add("crate");
-        this.img.setAttribute("src", "../images/crate.png");
+        this.img.setAttribute("src", "images/crate.png");
         this.character.appendChild(this.img);
         this.img.style.transform = `translate(-200px, px)`;
     }

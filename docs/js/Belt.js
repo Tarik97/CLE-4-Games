@@ -11,13 +11,13 @@ export class Belt {
             this.img.classList.add("tile");
             if (i == 0) {
                 this.img.classList.add("flipped");
-                this.img.setAttribute("src", "../images/belt2.png");
+                this.img.setAttribute("src", "images/belt2.png");
             }
             else if (i == this.beltLenght - 1) {
-                this.img.setAttribute("src", "../images/belt2.png");
+                this.img.setAttribute("src", "images/belt2.png");
             }
             else {
-                this.img.setAttribute("src", "../images/belt1.png");
+                this.img.setAttribute("src", "images/belt1.png");
             }
             this.belt.appendChild(this.img);
         }

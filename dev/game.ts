@@ -56,7 +56,7 @@ class Game {
             this.createLevel(this.levels[this.currentLevel])
         }
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 4; i++) {
             if (i % 2 == 0) {
                 this.belts.push(new Belt(i * 50, true));
             } else {

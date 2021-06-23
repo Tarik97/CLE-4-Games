@@ -30,7 +30,7 @@ export class Hook {
         this.div = document.createElement("hook");
         this.img = document.createElement("img");
         this.img.classList.add("tile");
-        this.img.setAttribute("src", "../images/hook.png");
+        this.img.setAttribute("src", "images/hook.png");
         this.div.appendChild(this.img);
         document.body.appendChild(this.div);
         this.x = (window.innerWidth / 2) - (this.div.clientWidth / 2);
